@@ -1,0 +1,203 @@
+{
+	"info": {
+		"_postman_id": "f6666d42-74fd-4e1f-bb02-6b9f16b79ba1",
+		"name": "Medium",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Article-API",
+			"item": [
+				{
+					"name": "Add Article",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "65cafba7-9772-4dae-892d-c9837c6dd626",
+								"exec": [
+									"let response = pm.response.json();",
+									"pm.environment.set(\"article_id\", response.id);",
+									"",
+									"tests[\"Created article with id \" + response.id ] = responseCode.code === 201;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"title\":\"{{article_title}}\",\r\n  \"content\":\"{{article_content}}\",\r\n  \"lang\":\"{{article_lang}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/v1/blog/article/",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"v1",
+								"blog",
+								"article",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Article",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "65cafba7-9772-4dae-892d-c9837c6dd626",
+								"exec": [
+									"tests[\"Successful request\"] = responseCode.code === 200;"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "35933799-efcf-438b-8e65-b1979ef47819",
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/v1/blog/article/{{article_id}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"v1",
+								"blog",
+								"article",
+								"{{article_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Article",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "65cafba7-9772-4dae-892d-c9837c6dd626",
+								"exec": [
+									"tests[\"Successful request\"] = responseCode.code === 200;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/v1/blog/article/{{article_id}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"v1",
+								"blog",
+								"article",
+								"{{article_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Article",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "65cafba7-9772-4dae-892d-c9837c6dd626",
+								"exec": [
+									"tests[\"Successful request\"] = responseCode.code === 200;"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseURL}}/v1/blog/article/{{article_id}}",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"v1",
+								"blog",
+								"article",
+								"{{article_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
